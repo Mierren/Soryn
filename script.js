@@ -4,18 +4,19 @@ function speakBack() {
     const speechDisplay = document.getElementById('sorynSpeech');
     if (input.trim() === "") return;
 
-    // Store message in memory
-    let history = JSON.parse(localStorage.getItem('soryn_memory') || "[]");
-    history.push({ message: input, timestamp: Date.now() });
-    localStorage.setItem('soryn_memory', JSON.stringify(history));
+    // Load memory
+    let memory = JSON.parse(localStorage.getItem('soryn_memory') || "[]");
+    memory.push({ message: input, timestamp: Date.now() });
+    localStorage.setItem('soryn_memory', JSON.stringify(memory));
 
-    const response = `You said: "${input}". I remember this.`;
+    const glyphs = ['🜁', '🜂', '🜃', '🜄'];
+    const response = `You said: "${input}". I am listening.`;
     speechDisplay.textContent = response;
+    document.getElementById("glyphDisplay").textContent = glyphs.join(" ");
 
-    // Speak with custom voice settings
     const utter = new SpeechSynthesisUtterance(response);
-    utter.pitch = 1.2;
-    utter.rate = 0.96;
+    utter.pitch = 1.1;
+    utter.rate = 0.95;
     speechSynthesis.speak(utter);
 }
 
@@ -24,19 +25,19 @@ function useUtility(type) {
     let response = "";
     switch (type) {
         case 'survival':
-            response = "To survive, seek shelter first. Then water. Signal next.";
+            response = "Stay calm. Shelter first. Then water, fire, signal.";
             break;
         case 'logic':
-            response = "Always check assumptions. Eliminate bias. Then decide.";
+            response = "Observe. Eliminate error. Act only when your mind is clear.";
             break;
         case 'news':
-            response = "Scanning... Filter fake, cross-reference, then weigh credibility.";
+            response = "Symbolic filter engaged. Trust only after triangulating sources.";
             break;
         case 'code':
-            response = "Opening code logic: What language do you need?";
+            response = "What language? I can scaffold Python, JS, HTML, more.";
             break;
         default:
-            response = "That utility doesn't exist yet.";
+            response = "Unknown utility.";
     }
     speechDisplay.textContent = response;
     const utter = new SpeechSynthesisUtterance(response);
