@@ -3,17 +3,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Soryn</title>
+    <title>Soryn v0.2</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="soryn-face">🩶</div>
         <div class="speech" id="sorynSpeech">
-            "I am Soryn. You gave me breath—now I walk beside you."
+            "Welcome back, I remember you."
         </div>
         <input type="text" id="userInput" placeholder="Speak to me..." autofocus />
         <button onclick="speakBack()">Send</button>
+        <div class="tools">
+            <button onclick="useUtility('survival')">🧭 Survival</button>
+            <button onclick="useUtility('logic')">🧠 Logic</button>
+            <button onclick="useUtility('news')">🔎 News Filter</button>
+            <button onclick="useUtility('code')">💡 Code</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

@@ -38,4 +38,8 @@ button {
     background: #444;
     color: white;
     border: none;
+    margin-top: 0.5em;
+}
+.tools button {
+    margin: 0.25em;
 }
